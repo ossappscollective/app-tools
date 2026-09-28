@@ -113,6 +113,9 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
+        with:
+          # the NativeScript doctor requires an emulator binary, the removed `tools` package used to ship one
+          packages: platform-tools emulator
 
       # - uses: nttld/setup-ndk@v1
       #   id: setup-ndk
