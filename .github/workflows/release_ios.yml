@@ -23,6 +23,11 @@ on:
         default: 'true'
         required: false
         type: string
+      upload_screenshots:
+        description: "Should we push the store screenshots?"
+        default: 'false'
+        required: false
+        type: string
       sentry:
         description: "Should we use sentry?"
         default: 'true'
@@ -162,7 +167,7 @@ jobs:
 
       - name: publish
         run: |
-          bundle exec fastlane ios alpha create_tag:${{ inputs.publish }} publish:${{ inputs.publish }} sentry:${{ inputs.sentry }} github:${{ inputs.github }}
+          bundle exec fastlane ios alpha create_tag:${{ inputs.publish }} publish:${{ inputs.publish }} upload_screenshots:${{ inputs.upload_screenshots }} sentry:${{ inputs.sentry }} github:${{ inputs.github }}
         env:
           # provide both names: some fastlane plugins expect GITHUB_API_TOKEN, others use GITHUB_TOKEN
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
